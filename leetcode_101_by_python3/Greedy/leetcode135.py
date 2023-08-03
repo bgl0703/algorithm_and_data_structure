@@ -9,16 +9,14 @@ def candy(input_list: list):
         right = input_list[i + 1]
         if left < right:
             candy_list[i + 1] = candy_list[i] + 1
-    print(candy_list)
-
-    # if input_list[]
+    # print(candy_list)
 
     for j in range(input_len - 1, 0, -1):
         left_ = input_list[j - 1]
         right_ = input_list[j]
         if right_ < left_ and candy_list[j - 1] <= candy_list[j]:
             candy_list[j - 1] = candy_list[j] + 1
-    print(candy_list)
+    # print(candy_list)
 
     return sum(candy_list)
 
