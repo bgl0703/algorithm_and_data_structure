@@ -1,28 +1,25 @@
 from typing import List
 
 
-def min_path_sum(grid: List[List[int]]) -> int:
-    grid_x = len(grid)
-    grid_y = len(grid[0])
-    dp = [[0 for _ in range(grid_y)] for _ in range(grid_x)]
-    x, y = 0, 0
-    while x < grid_x:
-        while y < grid_y:
-            if x == y == 0:
-                dp[x][y] = grid[0][0]
-            elif y == 0 and x > 0:
-                dp[x][y] = dp[x - 1][y] + grid[x][y]
-            elif x == 0 and y > 0:
-                dp[x][y] = dp[x][y - 1] + grid[x][y]
-            elif x > 0 and y > 0:
-                dp[x][y] = min(dp[x - 1][y], dp[x][y - 1]) + grid[x][y]
-            y += 1
-        y = 0
-        x += 1
-    return dp[grid_x - 1][grid_y - 1]
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        grid_x = len(grid)
+        grid_y = len(grid[0])
+        dp = [[0 for _ in range(grid_y)] for _ in range(grid_x)]
+        for j, value in enumerate(grid[0]):
+            dp[0][j] = dp[0][max(j-1, 0)] + value
+        for i in range(1, grid_x):
+            dp[i][0] = dp[i-1][0] + grid[i][0]
+
+        for i in range(1, grid_x):
+            for j in range(1, grid_y):
+                dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j]
+        return dp[grid_x - 1][grid_y - 1]
 
 
 if __name__ == '__main__':
-    grid = [[1, 2, 3], [4, 5, 6]]
-    ret = min_path_sum(grid)
-    print(ret)
+    grid =[[1, 3, 1], [1, 5, 1], [4, 2, 1]]
+
+    s = Solution()
+    res = s.minPathSum(grid)
+    print(res)

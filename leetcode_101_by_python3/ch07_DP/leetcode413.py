@@ -17,9 +17,6 @@ class Solution:
         return cnt
 
 
-
-
-
 if __name__ == '__main__':
     nus = [1, 2, 3, 4, 6, 8]
     s = Solution()
