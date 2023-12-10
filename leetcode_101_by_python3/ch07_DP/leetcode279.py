@@ -6,7 +6,7 @@ class Solution:
                 dp[i] = 1
             else:
                 dp[i] = 1 + min([dp[i - j * j] for j in range(1, int(i ** 0.5) + 1)])
-            print(f"dp == {dp}")
+            # print(f"dp == {dp}")
         return dp[-1]
 
 

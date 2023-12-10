@@ -20,4 +20,5 @@ class Solution:
 if __name__ == '__main__':
     nums = [4, 10, 4, 3, 8, 9]
     s = Solution()
-    s.lengthOfLIS(nums)
+    ret = s.lengthOfLIS(nums)
+    print(ret)
