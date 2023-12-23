@@ -27,6 +27,16 @@ def find_number_in_2d_array(matrix: List[List[int]], target: int) -> bool:
         if matrix[x_mid][y_mid] > target:
             y_right = y_mid - 1
     return False
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        len_nums1, len_nums2 = len(nums1), len(nums2)
+        len_total = len_nums1 + len_nums2
+
+
+        if len_total % 2 == 0:
+            p1, p2 = len_total//2 - 1, len_total//2
+        else:
+            p = len_total//2
 
 
 if __name__ == '__main__':
