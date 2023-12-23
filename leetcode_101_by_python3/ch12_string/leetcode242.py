@@ -1,23 +1,23 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        dict_char = {}
-        for char in s:
-            if char in dict_char:
-                dict_char[char] += 1
+        if len(s) != len(t):
+            return False
+        dict_1 = {}
+        for char1 in s:
+            if char1 in dict_1:
+                dict_1[char1] += 1
             else:
-                dict_char[char] = 1
+                dict_1[char1] = 1
 
-        for char in t:
-            if char not in dict_char:
+        for char2 in t:
+            if char2 in dict_1:
+                if dict_1[char2] == 1:
+                    dict_1.pop(char2)
+                else:
+                    dict_1[char2] -= 1
+            else:
                 return False
-
-            if char in dict_char:
-                dict_char[char] -= 1
-                if dict_char[char] == 0:
-                    dict_char.pop(char)
-        # print(f"dd === {dict_char}")
-
-        if not dict_char:
+        if not dict_1:
             return True
         else:
             return False
@@ -26,9 +26,20 @@ class Solution:
 
 
 
+
+
+
+
+
+
 if __name__ == '__main__':
     s = "anagram"
     t = "nagaram"
-    solu = Solution()
-    res = solu.isAnagram(s, t)
-    print(res)
+    dict1 = {"aa": 11, "cc":22, "dd":33}
+    dict2 = {"cc": 22, "aa": 11, "dd": 33}
+
+
+
+    # solu = Solution()
+    # res = solu.isAnagram(s, t)
+    # print(res)
